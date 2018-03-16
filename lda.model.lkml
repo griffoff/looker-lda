@@ -17,3 +17,17 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+
+explore: submissions {
+
+}
+
+explore: weekly_data_union {
+  join: item_types {
+    sql_on: ${weekly_data_union.productcode}=${item_types.productcode} and ${weekly_data_union.itemname}=${item_types.itemname} ;;
+  }
+join: disciplines {
+  sql_on: ${weekly_data_union.productcode}=${disciplines.productcode}  ;;
+}
+
+}
