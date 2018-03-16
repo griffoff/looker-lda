@@ -1,3 +1,4 @@
+include: "weekly_data_cnow.view.lkml"
 view: weekly_data_union {
   extends: [weekly_data_cnow]
 #  sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.WEEKLY_DATA_CNOW ;;
