@@ -57,8 +57,33 @@ view: submissions {
   }
 
   dimension: itemuri {
+    group_label: "Item Uri"
     type: string
     sql: ${TABLE}.ITEMURI ;;
+  }
+
+  dimension: itemuri_system {
+    group_label: "Item Uri"
+    type: string
+    sql: split_part(${TABLE}.ITEMURI, ':', 1) ;;
+  }
+
+  dimension: itemuri_productcode {
+    group_label: "Item Uri"
+    type: string
+    sql: split_part(${TABLE}.ITEMURI, ':', 2) ;;
+  }
+
+  dimension: itemuri_itemid {
+    group_label: "Item Uri"
+    type: string
+    sql: split_part(${TABLE}.ITEMURI, ':', -1) ;;
+  }
+
+  measure: item_uri_example {
+    group_label: "Item Uri"
+    type: string
+    sql: any_value(${itemuri}) ;;
   }
 
   dimension: nodeid {
@@ -121,9 +146,12 @@ measure: scoreavg {
     sql: ${TABLE}.TAKEINDEX ;;
   }
 
-  dimension: time {
-    type: number
-    sql: ${TABLE}.TIME ;;
+  dimension_group: time {
+    group_label: "Submission Date"
+    label: "Submission"
+    type: time
+    timeframes: [year, month, day_of_week, time, raw]
+    sql: to_timestamp(${TABLE}.TIME, 3) ;;
   }
 
   dimension: urialiases {
