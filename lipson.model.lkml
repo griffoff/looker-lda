@@ -37,3 +37,5 @@ explore: weekly_data_union {
 }
 
 explore: fivetran_audit {}
+
+explore:  hub_book{}
