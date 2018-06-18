@@ -66,6 +66,6 @@ view: sat_book {
 
   measure: count {
     type: count
-    drill_fields: [name]
+    drill_fields: []
   }
 }
