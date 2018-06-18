@@ -18,3 +18,4 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #   }
 # }
 explore: sat_take {}
+explore: sat_book {}
