@@ -1,5 +1,5 @@
-view: sat_take {
-  sql_table_name: DATAVAULTCNOW.SAT_TAKE ;;
+view: cxp_sat_take {
+  sql_table_name: DATAVAULTCXP.SAT_TAKE ;;
 
   dimension: hashdiff {
     type: string
@@ -44,37 +44,23 @@ view: sat_take {
     sql: ${TABLE}."RSRC" ;;
   }
 
-  dimension_group: take_date {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."TAKE_DATE" ;;
-  }
-
-  dimension_group: take_modyf {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."TAKE_MODYF" ;;
-  }
-
-  dimension: take_score {
+  dimension: score {
     type: string
-    sql: ${TABLE}."TAKE_SCORE" ;;
+    sql: ${TABLE}."SCORE" ;;
+  }
+
+  dimension_group: take {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."TAKE_TIME" ;;
   }
 
   measure: count {
