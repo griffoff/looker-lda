@@ -1,29 +1,24 @@
 view: lnk_take {
-  sql_table_name: DATAVAULTCNOW.LNK_TAKE ;;
+  sql_table_name: DATAVAULTCXP.LNK_TAKE ;;
 
   dimension: assignmenthash {
     type: string
     sql: ${TABLE}."ASSIGNMENTHASH" ;;
   }
 
-  dimension: bookhash {
+  dimension: coursekeyhash {
     type: string
-    sql: ${TABLE}."BOOKHASH" ;;
+    sql: ${TABLE}."COURSEKEYHASH" ;;
   }
 
-  dimension: cnowuserhash {
+  dimension: cxpuserhash {
     type: string
-    sql: ${TABLE}."CNOWUSERHASH" ;;
+    sql: ${TABLE}."CXPUSERHASH" ;;
   }
 
-  dimension: institutionhash {
+  dimension: itemidhash {
     type: string
-    sql: ${TABLE}."INSTITUTIONHASH" ;;
-  }
-
-  dimension: itemuidhash {
-    type: string
-    sql: ${TABLE}."ITEMUIDHASH" ;;
+    sql: ${TABLE}."ITEMIDHASH" ;;
   }
 
   dimension_group: ldts {
@@ -45,19 +40,24 @@ view: lnk_take {
     sql: ${TABLE}."LNK_TAKEHASH" ;;
   }
 
+  dimension: nodehash {
+    type: string
+    sql: ${TABLE}."NODEHASH" ;;
+  }
+
+  dimension: productcodehash {
+    type: string
+    sql: ${TABLE}."PRODUCTCODEHASH" ;;
+  }
+
   dimension: rsrc {
     type: string
     sql: ${TABLE}."RSRC" ;;
   }
 
-  dimension: sectionhash {
+  dimension: takehash {
     type: string
-    sql: ${TABLE}."SECTIONHASH" ;;
-  }
-
-  dimension: testhash {
-    type: string
-    sql: ${TABLE}."TESTHASH" ;;
+    sql: ${TABLE}."TAKEHASH" ;;
   }
 
   measure: count {

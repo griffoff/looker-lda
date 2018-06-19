@@ -45,7 +45,7 @@ view: cxp_sat_take {
   }
 
   dimension: score {
-    type: string
+    type: number
     sql: ${TABLE}."SCORE" ;;
   }
 

@@ -25,3 +25,7 @@ explore: cxp_hub_node{}
 explore: cxp_hub_productcode {}
 explore: cxp_hub_take {}
 explore: cxp_sat_take {}
+
+explore: low_product {
+  from: cxp_sat_take
+}
