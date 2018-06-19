@@ -69,12 +69,12 @@ view: cxp_sat_take {
   }
 
   measure: count {
-    type: average
+    type: count
     drill_fields: []
   }
 
-  measure: average {
+  measure: avg_score {
     type: average
-    drill_fields: [score]
+    sql: ${score} ;;
   }
 }
