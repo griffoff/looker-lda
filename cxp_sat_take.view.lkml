@@ -49,6 +49,11 @@ view: cxp_sat_take {
     sql: ${TABLE}."SCORE" ;;
   }
 
+  dimension: seed {
+    type: string
+    sql: ${TABLE}."SEED" ;;
+  }
+
   dimension_group: take {
     type: time
     timeframes: [

@@ -35,4 +35,5 @@ explore: cxp_sat_take {
     relationship: many_to_one
     sql_on: ${cxp_hub_productcode.productcodehash} = ${cxp_lnk_take.productcodehash} ;;
   }
+  group_label: "Low_Score_Product"
 }
