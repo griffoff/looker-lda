@@ -1,4 +1,4 @@
-view: lnk_take {
+view: cxp_lnk_take {
   sql_table_name: DATAVAULTCXP.LNK_TAKE ;;
 
   dimension: assignmenthash {

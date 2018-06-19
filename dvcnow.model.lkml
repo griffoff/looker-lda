@@ -24,8 +24,15 @@ explore: cxp_hub_itemid {}
 explore: cxp_hub_node{}
 explore: cxp_hub_productcode {}
 explore: cxp_hub_take {}
-explore: cxp_sat_take {}
+#explore: cxp_sat_take {}
 
-explore: low_product {
-  from: cxp_sat_take
+explore: cxp_sat_take {
+  join: cxp_lnk_take {
+    relationship: many_to_one
+    sql_on: ${cxp_lnk_take.lnk_takehash} = ${cxp_sat_take.lnk_takehash} ;;
+  }
+  join: cxp_hub_productcode {
+    relationship: many_to_one
+    sql_on: ${cxp_hub_productcode.productcodehash} = ${cxp_lnk_take.productcodehash} ;;
+  }
 }
