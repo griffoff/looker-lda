@@ -69,7 +69,7 @@ view: cxp_sat_take {
   }
 
   measure: count {
-    type: count
+    type: average
     drill_fields: []
   }
 
