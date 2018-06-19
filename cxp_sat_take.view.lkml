@@ -73,8 +73,8 @@ view: cxp_sat_take {
     drill_fields: []
   }
 
-  measure: avg_score {
-    type: average
+  measure: average {
+    type: count
     drill_fields: [score]
   }
 }
