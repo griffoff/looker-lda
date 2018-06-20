@@ -8,6 +8,7 @@ view: cxp_hub_itemid {
 
   dimension: itemidhash {
     type: string
+    hidden: yes
     sql: ${TABLE}."ITEMIDHASH" ;;
   }
 

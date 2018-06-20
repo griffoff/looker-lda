@@ -36,6 +36,7 @@ view: cxp_sat_take {
 
   dimension: lnk_takehash {
     type: string
+    hidden: yes
     sql: ${TABLE}."LNK_TAKEHASH" ;;
   }
 

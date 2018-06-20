@@ -22,6 +22,7 @@ view: cxp_hub_productcode {
 
   dimension: productcodehash {
     type: string
+    hidden: yes
     sql: ${TABLE}."PRODUCTCODEHASH" ;;
   }
 
