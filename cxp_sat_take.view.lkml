@@ -41,6 +41,7 @@ view: cxp_sat_take {
   }
 
   dimension: rsrc {
+    label: "Resource"
     type: string
     sql: ${TABLE}."RSRC" ;;
   }
@@ -56,6 +57,7 @@ view: cxp_sat_take {
   }
 
   dimension_group: take {
+    label: "Submit Time"
     type: time
     timeframes: [
       raw,
@@ -75,6 +77,7 @@ view: cxp_sat_take {
   }
 
   measure: avg_score {
+    label: "Average Score"
     type: average
     sql: ${score} ;;
   }
