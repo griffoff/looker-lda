@@ -27,6 +27,7 @@ explore: cxp_hub_take {}
 #explore: cxp_sat_take {}
 
 explore: cxp_sat_take {
+  label: "Low_Score_Report"
   join: cxp_lnk_take {
     relationship: many_to_one
     sql_on: ${cxp_lnk_take.lnk_takehash} = ${cxp_sat_take.lnk_takehash} ;;
