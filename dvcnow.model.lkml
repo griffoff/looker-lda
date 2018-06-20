@@ -27,7 +27,11 @@ explore: cxp_hub_take {}
 #explore: cxp_sat_take {}
 
 explore: cxp_sat_take {
-  label: "Low_Score_Report"
+  label: "ProductCode ItemID Report"
+  description: "Returns ProductCodes and ItemIDs with abnormally low average scores"
+  fields: [ALL_FIELDS*, -cxp_lnk_take.lnk_takehash, cxp_lnk_take.takehash, cxp_lnk_take.assignmenthash, cxp_lnk_take.count, cxp_lnk_take.coursekeyhash,
+    cxp_lnk_take.itemidhash, cxp_lnk_take.cxpuserhash, cxp_lnk_take.ldts_date, cxp_lnk_take.ldts_month, cxp_lnk_take.ldts_quarter, cxp_lnk_take.ldts_raw,
+    cxp_lnk_take.ldts_time, cxp_lnk_take.ldts_week, cxp_lnk_take.ldts_year, cxp_lnk_take.nodehash, cxp_lnk_take.productcodehash, cxp_lnk_take.rsrc]
   join: cxp_lnk_take {
     relationship: many_to_one
     sql_on: ${cxp_lnk_take.lnk_takehash} = ${cxp_sat_take.lnk_takehash} ;;
@@ -40,5 +44,5 @@ explore: cxp_sat_take {
     relationship: many_to_one
     sql_on: ${cxp_hub_itemid.itemidhash} = ${cxp_lnk_take.itemidhash} ;;
   }
-  group_label: "Low_Score_Report"
+  group_label: "Low_Score_Reports"
 }

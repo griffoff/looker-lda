@@ -3,6 +3,7 @@ view: cxp_sat_take {
 
   dimension: hashdiff {
     type: string
+    hidden: yes
     sql: ${TABLE}."HASHDIFF" ;;
   }
 
