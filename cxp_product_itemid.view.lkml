@@ -16,7 +16,7 @@ view: cxp_product_itemid {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    drill_fields: []
   }
 
   measure: avg_score {
