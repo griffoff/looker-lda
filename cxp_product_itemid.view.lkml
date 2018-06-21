@@ -9,9 +9,7 @@ view: cxp_product_itemid {
         lda.datavaultcxp.SAT_TAKE
       inner join lda.datavaultcxp.lnk_take on lnk_take.lnk_takehash = sat_take.lnk_takehash
       inner join lda.datavaultcxp.hub_productcode as hub_productcode on hub_productcode.productcodehash = lnk_take.productcodehash
-      inner join lda.datavaultcxp.hub_itemid on hub_itemid.itemidhash = lnk_take.itemidhash
-      limit 15
-       ;;
+      inner join lda.datavaultcxp.hub_itemid on hub_itemid.itemidhash = lnk_take.itemidhash  ;;
   }
 
   measure: count {
