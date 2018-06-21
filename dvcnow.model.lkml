@@ -77,14 +77,14 @@ explore: cxp_course {
   label: "Derived_Course-Report"
   description: "Returns CourseKeys with abnormally low average scores using derived table"
   group_label: "Low Score Reports"
-  always_filter: {
-    filters: {
-      field: avg_score
-      value: "<= 0.15"
-    }
-    filters: {
-      field: count
-      value: ">= 1000"
-    }
-  }
+ # always_filter: {
+    #filters: {
+      #field: avg_score
+      #value: "<= 0.15"
+    #}
+    #filters: {
+      #field: count
+      #value: ">= 1000"
+    #}
+  #}
 }
