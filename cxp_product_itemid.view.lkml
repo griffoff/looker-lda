@@ -2,7 +2,7 @@ view: cxp_product_itemid {
   derived_table: {
     sql: select
         hub_productcode.productcode as Productcode
-       , hub_itemid.itemidhash as ItemID
+       , hub_itemid.itemid as ItemID
        , SAT_TAKE.Score as Score
        , SAT_TAKE.take_time as Submit
       from
