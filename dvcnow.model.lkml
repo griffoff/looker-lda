@@ -56,3 +56,19 @@ explore: cxp_sat_take {
     }
   }
 }
+
+explore: cxp_product_itemid {
+  label: "ProductCode-ItemID-Report"
+  description: "Returns ProductCodes and ItemIDs with abnormally low average scores"
+  group_label: "Low Score Reports"
+  always_filter: {
+    filters: {
+      field: avg_score
+      value: "<= 0.15"
+    }
+    filters: {
+      field: count
+      value: ">= 1000"
+    }
+  }
+}

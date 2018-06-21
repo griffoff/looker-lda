@@ -1,4 +1,4 @@
-view: product_itemid {
+view: cxp_product_itemid {
   derived_table: {
     sql: select
         hub_productcode.productcode as Productcode
