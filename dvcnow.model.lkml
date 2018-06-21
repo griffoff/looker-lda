@@ -3,13 +3,13 @@ connection: "snowflake_lda"
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
 
-explore: cxp_hub_assignment {}
-explore: cxp_hub_course {}
-explore: cxp_hub_cxpuser {}
-explore: cxp_hub_itemid {}
-explore: cxp_hub_node{}
-explore: cxp_hub_productcode {}
-explore: cxp_hub_take {}
+#explore: cxp_hub_assignment {}
+#explore: cxp_hub_course {}
+#explore: cxp_hub_cxpuser {}
+#explore: cxp_hub_itemid {}
+#explore: cxp_hub_node{}
+#explore: cxp_hub_productcode {}
+#explore: cxp_hub_take {}
 #explore: cxp_sat_take {}
 
 explore: cxp_sat_take {
