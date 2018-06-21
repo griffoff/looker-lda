@@ -9,7 +9,6 @@ view: cxp_course {
         left outer join lda.datavaultcxp.lnk_take on lnk_take.lnk_takehash = sat_take.lnk_takehash
         left outer join lda.datavaultcxp.hub_course as hub_course on hub_course.coursekeyhash = lnk_take.coursekeyhash
         --left outer join lda.datavaultcxp.hub_itemid on hub_itemid.itemidhash = lnk_take.itemidhash
-        limit 15
     ;;
   }
 
