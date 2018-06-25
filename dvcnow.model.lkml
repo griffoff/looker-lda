@@ -77,9 +77,6 @@ explore: lipson_weekly_aggregation {
    relationship: many_to_one
    sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_aggregation.productcode}
       AND ${lipson_item_types.itemname} = ${lipson_weekly_aggregation.itemname}
-      and ${lipson_item_types._fivetran_deleted} = false
-      and ${lipson_item_types.problemtype} != 'multi'
-      and ${lipson_item_types.problemtype} != 'essay'
-      and ${lipson_item_types.problemtype} != 'Essay' ;;
+      and ${lipson_item_types._fivetran_deleted} = false ;;
   }
 }
