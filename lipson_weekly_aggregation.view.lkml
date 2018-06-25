@@ -51,7 +51,7 @@ view: lipson_weekly_aggregation {
   }
 
   measure: avg_score {
-    type: number
+    type: average
     sql: ${avgscore} ;;
   }
 
