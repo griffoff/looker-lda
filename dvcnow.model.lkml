@@ -75,7 +75,25 @@ explore: lipson_weekly_aggregation {
   }
  join: lipson_item_types {
    relationship: many_to_one
-   sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_aggregation.productcode} AND ${lipson_item_types.itemname} = ${lipson_weekly_aggregation.itemname}
-      AND ${lipson_item_types._fivetran_deleted} = FALSE and ${lipson_item_types.problemtype} !='multi' and ${lipson_item_types.problemtype} !='essay';;
+   sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_aggregation.productcode}
+      AND ${lipson_item_types.itemname} = ${lipson_weekly_aggregation.itemname} ;;
+}
+always_filter: {
+  filters: {
+    field: lipson_item_types._fivetran_deleted
+    value: "= FALSE"
+  }
+  filters: {
+    field: lipson_item_types.problemtype
+    value: "!= multi"
+    }
+  filters: {
+      field: lipson_item_types.problemtype
+      value: "!= essay"
+    }
+  filters: {
+    field: lipson_item_types.problemtype
+    value: "!= Essay"
+  }
  }
 }

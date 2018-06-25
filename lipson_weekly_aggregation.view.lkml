@@ -53,6 +53,7 @@ view: lipson_weekly_aggregation {
   measure: avg_score {
     type: average
     sql: ${avgscore} ;;
+    #sum(a.nTakes*a.avgScore)/sum(a.nTakes)
   }
 
   set: detail {
