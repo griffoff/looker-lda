@@ -1,10 +1,10 @@
 view: l {
   derived_table: {
   sql: SELECT
-    a.productcode,
-    a.itemName,
-    sum(a.nTakes) as total_takes,
-    sum(a.nTakes*a.avgScore)/sum(a.nTakes) as avg_score
+    a.productcode as PRODUCTCODE,
+    a.itemName as ITEMNAME,
+    sum(a.nTakes) as TOTAL_TAKES,
+    sum(a.nTakes*a.avgScore)/sum(a.nTakes) as AVG_SCORE
   FROM ${lipson_weekly_aggregation.SQL_TABLE_NAME} a
   GROUP BY a.productCode, a.itemName
   ;;
@@ -20,14 +20,14 @@ view: l {
     sql: ${TABLE}."ITEMNAME" ;;
   }
 
-  dimension: avg_s {
+  dimension: total_takes {
     type: number
-    sql: ${TABLE}."AVG_SCORE" ;;
+    sql: ${TABLE}."TOTAL_TAKES" ;;
   }
 
-  dimension: takes {
+  dimension: avg_score {
     type: number
-    sql: ${TABLE}."total_TAKES" ;;
+    sql: ${TABLE}."AVG_SCORE" ;;
   }
 
   measure: count {
