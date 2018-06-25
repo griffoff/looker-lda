@@ -47,7 +47,7 @@ view: lipson_weekly_aggregation {
 
   measure: total_takes {
     type: sum
-    drill_fields: [ntakes]
+    sql: ${ntakes};;
   }
 
   set: detail {
