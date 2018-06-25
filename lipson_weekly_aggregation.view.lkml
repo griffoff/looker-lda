@@ -45,10 +45,6 @@ view: lipson_weekly_aggregation {
     drill_fields: []
   }
 
-  measure: Total_Takes {
-    type: sum
-    drill_fields: [ntakes]
-  }
   set: detail {
     fields: [weekstart, productcode, itemname, avgscore, ntakes]
   }

@@ -66,7 +66,7 @@ explore: cxp_course {
   }
 }
 
-explore: lipson_weekly_aggregation {
+explore: l {
   group_label: "Lipson Low Score Reports"
   label: "Discipline ProblemType FieldType Report"
 # join: lipson_disciplines {
