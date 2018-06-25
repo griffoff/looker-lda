@@ -69,8 +69,8 @@ explore: cxp_course {
 explore: lipson_weekly_aggregation {
   group_label: "Lipson Low Score Reports"
   label: "Discipline ProblemType FieldType Report"
-  join: lipson_disciplines {
-    relationship: many_to_one
-    sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_aggregation.productcode} AND ${lipson_disciplines._fivetran_deleted} = FALSE ;;
-  }
+# join: lipson_disciplines {
+#    relationship: many_to_one
+#    sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_aggregation.productcode} AND ${lipson_disciplines._fivetran_deleted} = FALSE ;;
+#  }
 }
