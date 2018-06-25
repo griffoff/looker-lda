@@ -83,5 +83,9 @@ explore: lipson_weekly_aggregation {
       field: lipson_disciplines._fivetran_deleted
       value: "false"
     }
+    filters: {
+      field: lipson_item_types._fivetran_deleted
+      value: "false"
+    }
   }
 }

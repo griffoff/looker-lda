@@ -9,16 +9,19 @@ view: lipson_item_types {
   dimension: _fivetran_id {
     type: string
     sql: ${TABLE}._FIVETRAN_ID ;;
+    hidden: yes
   }
 
   dimension: _fivetran_index {
     type: number
     sql: ${TABLE}._FIVETRAN_INDEX ;;
+    hidden: yes
   }
 
   dimension: _fivetran_synced {
     type: string
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    hidden: yes
   }
 
   dimension: fieldtypes {
@@ -29,6 +32,7 @@ view: lipson_item_types {
   dimension: gradingmethods {
     type: string
     sql: ${TABLE}.GRADINGMETHODS ;;
+    hidden: yes
   }
 
   dimension: itemname {

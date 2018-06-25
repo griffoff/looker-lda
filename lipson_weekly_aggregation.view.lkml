@@ -33,16 +33,19 @@ view: lipson_weekly_aggregation {
   dimension: avgscore {
     type: number
     sql: ${TABLE}."AVGSCORE" ;;
+    hidden: yes
   }
 
   dimension: ntakes {
     type: number
     sql: ${TABLE}."NTAKES";;
+    hidden: yes
   }
 
   dimension: ntakes_times_avgscore {
     type: number
     sql: 1.0 * ${TABLE}."NTAKES" * ${TABLE}."AVGSCORE";;
+    hidden: yes
   }
 
   measure: count {
@@ -58,15 +61,12 @@ view: lipson_weekly_aggregation {
   measure: total_ntakes_avgscore {
     type: sum
     sql: ${ntakes_times_avgscore};;
+    hidden: yes
   }
 
   measure: avg_score {
     type: number
     sql: 1.0 * ${total_ntakes_avgscore} / ${total_takes} ;;
     #sum(a.nTakes*a.avgScore)/sum(a.nTakes)
-  }
-
-  set: detail {
-    fields: [weekstart, productcode, itemname, avgscore, ntakes]
   }
 }

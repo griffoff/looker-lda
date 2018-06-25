@@ -9,11 +9,13 @@ view: lipson_disciplines {
   dimension: _fivetran_index {
     type: number
     sql: ${TABLE}._FIVETRAN_INDEX ;;
+    hidden: yes
   }
 
   dimension: _fivetran_synced {
     type: string
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    hidden: yes
   }
 
   dimension: category {
