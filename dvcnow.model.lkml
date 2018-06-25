@@ -21,7 +21,7 @@ explore: cxp_sat_take {
     relationship: many_to_one
     sql_on: ${cxp_hub_itemid.itemidhash} = ${cxp_lnk_take.itemidhash} ;;
   }
-  group_label: "Low Score Reports"
+  group_label: "CXP Low Score Reports"
   always_filter: {
     filters: {
       field: avg_score
@@ -37,7 +37,7 @@ explore: cxp_sat_take {
 explore: cxp_product_itemid {
   label: "Derived_ProductCode-ItemID-Report"
   description: "Returns ProductCodes and ItemIDs with abnormally low average scores using derived table"
-  group_label: "Low Score Reports"
+  group_label: "CXP Low Score Reports"
   always_filter: {
     filters: {
       field: avg_score
@@ -53,7 +53,7 @@ explore: cxp_product_itemid {
 explore: cxp_course {
   label: "Derived_Course-Report"
   description: "Returns CourseKeys with abnormally low average scores using derived table"
-  group_label: "Low Score Reports"
+  group_label: "CXP Low Score Reports"
   always_filter: {
     filters: {
       field: avg_score
@@ -66,4 +66,6 @@ explore: cxp_course {
   }
 }
 
-explore: lipsol_weekly_aggregation {}
+explore: lipsol_weekly_aggregation {
+group_label: "Lipson Low Score Reports"
+}
