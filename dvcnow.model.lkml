@@ -66,6 +66,6 @@ explore: cxp_course {
   }
 }
 
-explore: lipsol_weekly_aggregation {
+explore: lipson_weekly_aggregation {
 group_label: "Lipson Low Score Reports"
 }
