@@ -78,4 +78,10 @@ explore: lipson_weekly_aggregation {
    relationship: many_to_one
    sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_aggregation.productcode} AND ${lipson_item_types.itemname} = ${lipson_weekly_aggregation.itemname} ;;
   }
+  always_filter: {
+    filters: {
+      field: lipson_disciplines._fivetran_deleted
+      value: "false"
+    }
+  }
 }
