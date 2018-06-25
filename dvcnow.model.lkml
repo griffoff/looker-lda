@@ -70,7 +70,6 @@ explore: lipson_weekly_aggregation {
   group_label: "Lipson Low Score Reports"
   label: "Discipline ProblemType FieldType Report"
  join: lipson_disciplines {
-  type: inner
   relationship: many_to_one
   sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_aggregation.productcode} ;;
   }
