@@ -65,3 +65,5 @@ explore: cxp_course {
     }
   }
 }
+
+explore: lipsol_weekly_aggregation {}
