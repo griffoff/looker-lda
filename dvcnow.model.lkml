@@ -76,6 +76,6 @@ explore: l {
  join: lipson_item_types {
    relationship: many_to_one
    sql_on: ${lipson_item_types.productcode}= ${l.productcode} AND ${lipson_item_types.itemname} = ${l.itemname}
-      AND ${lipson_item_types._fivetran_deleted} = FALSE ;;
+      AND ${lipson_item_types._fivetran_deleted} = FALSE and ${lipson_item_types.problemtype} !='multi' and ${lipson_item_types.problemtype} !='essay';;
  }
 }
