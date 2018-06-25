@@ -20,12 +20,12 @@ view: l {
     sql: ${TABLE}."ITEMNAME" ;;
   }
 
-  dimension: avgscore {
+  dimension: avg_s {
     type: number
     sql: ${TABLE}."AVGSCORE" ;;
   }
 
-  dimension: ntakes {
+  dimension: takes {
     type: number
     sql: ${TABLE}."NTAKES" ;;
   }
