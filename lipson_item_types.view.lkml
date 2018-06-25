@@ -1,4 +1,4 @@
-view: item_types {
+view: lipson_item_types {
   sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.ITEM_TYPES ;;
 
   dimension: _fivetran_deleted {

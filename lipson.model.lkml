@@ -25,16 +25,16 @@ explore: submissions {
 
 }
 
-explore: weekly_data_union {
-  join: item_types {
-    sql_on: ${weekly_data_union.productcode}=${item_types.productcode} and ${weekly_data_union.itemname}=${item_types.itemname} ;;
-    relationship: many_to_one
-  }
-  join: disciplines {
-    sql_on: ${weekly_data_union.productcode}=${disciplines.productcode}  ;;
-    relationship: many_to_one
-  }
-}
+#explore: weekly_data_union {
+#  join: item_types {
+#    sql_on: ${weekly_data_union.productcode}=${item_types.productcode} and ${weekly_data_union.itemname}=${item_types.itemname} ;;
+#    relationship: many_to_one
+#  }
+#  join: disciplines {
+#    sql_on: ${weekly_data_union.productcode}=${disciplines.productcode}  ;;
+#    relationship: many_to_one
+#  }
+#}
 
 #explore: fivetran_audit {}
 

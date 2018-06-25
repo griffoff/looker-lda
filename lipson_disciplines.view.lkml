@@ -1,4 +1,4 @@
-view: disciplines {
+view: lipson_disciplines {
   sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.DISCIPLINES ;;
 
   dimension: _fivetran_deleted {

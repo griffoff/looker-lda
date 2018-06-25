@@ -11,7 +11,7 @@ view: lipson_weekly_aggregation {
         count(*) AS nTakes
       FROM LDA.FIVETRAN_CNOW_CXP_ANALYSIS.submissions s
       WHERE s.score >= 0 AND s._fivetran_deleted = FALSE
-      GROUP BY weekStart,productcode,itemname;
+      GROUP BY weekStart,productcode,itemname
        ;;
   }
 
