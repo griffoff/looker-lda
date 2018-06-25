@@ -50,6 +50,11 @@ view: lipson_weekly_aggregation {
     sql: ${ntakes};;
   }
 
+  measure: avg_score {
+    type: number
+    sql: ${avgscore} ;;
+  }
+
   set: detail {
     fields: [weekstart, productcode, itemname, avgscore, ntakes]
   }
