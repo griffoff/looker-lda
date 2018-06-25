@@ -62,7 +62,7 @@ view: lipson_weekly_aggregation {
 
   measure: avg_score {
     type: number
-    sql: 1.00000 * ${total_ntakes_avgscore} / ${total_takes} ;;
+    sql: 1.0 * ${total_ntakes_avgscore} / ${total_takes} ;;
     #sum(a.nTakes*a.avgScore)/sum(a.nTakes)
   }
 
