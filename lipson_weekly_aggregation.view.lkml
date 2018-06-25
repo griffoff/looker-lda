@@ -37,7 +37,12 @@ view: lipson_weekly_aggregation {
 
   dimension: ntakes {
     type: number
-    sql: ${TABLE}."NTAKES" ;;
+    sql: ${TABLE}."NTAKES";;
+  }
+
+  dimension: ntakes_times_avgscore {
+    type: number
+    sql: ${TABLE}."NTAKES" * ${TABLE}."AVGSCORE";;
   }
 
   measure: count {
@@ -50,9 +55,15 @@ view: lipson_weekly_aggregation {
     sql: ${ntakes};;
   }
 
+  measure: total_ntakes_avgscore {
+    hidden: yes
+    type: sum
+    sql: ${ntakes};;
+  }
+
   measure: avg_score {
-    type: average
-    sql: ${avgscore} ;;
+    type: number
+    sql: 1.00000 * ${total_ntakes_avgscore} / ${total_takes} ;;
     #sum(a.nTakes*a.avgScore)/sum(a.nTakes)
   }
 
