@@ -68,7 +68,7 @@ explore: cxp_course {
 
 explore: lipson_submissions_weekly {
   group_label: "Lipson Low Score Reports"
-  label: "Discipline ProblemType FieldType Report"
+  label: "Submissions Discipline PrType FType Report"
  join: lipson_disciplines {
   relationship: many_to_one
   sql_on: ${lipson_disciplines.productcode} = ${lipson_submissions_weekly.productcode} ;;
@@ -78,6 +78,32 @@ explore: lipson_submissions_weekly {
    relationship: many_to_one
    sql_on: ${lipson_item_types.productcode}= ${lipson_submissions_weekly.productcode}
         AND ${lipson_item_types.itemname} = ${lipson_submissions_weekly.itemname} ;;
+  }
+  always_filter: {
+    filters: {
+      field: lipson_disciplines._fivetran_deleted
+      value: "No"
+    }
+    filters: {
+      field: lipson_item_types._fivetran_deleted
+      value: "No"
+    }
+  }
+}
+
+explore: lipson_weekly_data_cxp {
+  group_label: "Lipson Low Score Reports"
+  label: "Weelky_CXP Discipline PrType FType Report"
+  sql_always_where: ${_fivetran_deleted}='No' AND ${_fivetran_index} is not NULL;;
+  join: lipson_disciplines {
+    relationship: many_to_one
+    sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_data_cxp.productcode} ;;
+  }
+  join: lipson_item_types {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_data_cxp.productcode}
+      AND ${lipson_item_types.itemname} = ${lipson_weekly_data_cxp.itemname} ;;
   }
   always_filter: {
     filters: {
