@@ -116,3 +116,54 @@ explore: lipson_weekly_data_cxp {
     }
   }
 }
+
+explore: lipson_united {
+  group_label: "Lipson Low Score Reports"
+  label: "United Data Discipline PrType FType Report"
+  join: lipson_disciplines {
+    relationship: many_to_one
+    sql_on: ${lipson_disciplines.productcode} = ${lipson_united.productcode} ;;
+  }
+  join: lipson_item_types {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${lipson_item_types.productcode}= ${lipson_united.productcode}
+      AND ${lipson_item_types.itemname} = ${lipson_united.itemname} ;;
+  }
+  always_filter: {
+    filters: {
+      field: lipson_disciplines._fivetran_deleted
+      value: "No"
+    }
+    filters: {
+      field: lipson_item_types._fivetran_deleted
+      value: "No"
+    }
+  }
+ }
+
+explore: lipson_weekly_united {
+  group_label: "Lipson Low Score Reports"
+  label: "United Weelky Discipline PrType FType Report"
+  sql_always_where: ${_fivetran_deleted}='No' AND ${_fivetran_index} is not NULL;;
+#  join: lipson_disciplines {
+#    relationship: many_to_one
+#    sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_united.productcode} ;;
+#  }
+#  join: lipson_item_types {
+#    type: inner
+#    relationship: many_to_one
+#    sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_united.productcode}
+#      AND ${lipson_item_types.itemname} = ${lipson_weekly_united.itemname} ;;
+#  }
+#  always_filter: {
+#    filters: {
+#      field: lipson_disciplines._fivetran_deleted
+#      value: "No"
+#    }
+#    filters: {
+#      field: lipson_item_types._fivetran_deleted
+#      value: "No"
+#    }
+#  }
+}
