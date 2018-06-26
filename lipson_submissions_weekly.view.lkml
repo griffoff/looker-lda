@@ -1,4 +1,4 @@
-view: lipson_weekly_aggregation {
+view: lipson_submissions_weekly {
   derived_table: {
     sql: SELECT
       to_date(to_timestamp_ntz(
