@@ -21,9 +21,7 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #   }
 # }
 
-explore: submissions {
-
-}
+#explore: submissions {}
 
 #explore: weekly_data_union {
 #  join: item_types {
@@ -38,4 +36,4 @@ explore: submissions {
 
 #explore: fivetran_audit {}
 
-explore:  hub_book{}
+#explore:  hub_book{}

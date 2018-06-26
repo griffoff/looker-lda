@@ -82,11 +82,11 @@ explore: lipson_submissions_weekly {
   always_filter: {
     filters: {
       field: lipson_disciplines._fivetran_deleted
-      value: "false"
+      value: "No"
     }
     filters: {
       field: lipson_item_types._fivetran_deleted
-      value: "false"
+      value: "No"
     }
   }
 }

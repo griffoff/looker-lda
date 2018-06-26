@@ -1,4 +1,4 @@
-view: weekly_data_cxp {
+view: lipson_weekly_data_cxp {
   sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.WEEKLY_DATA_CXP ;;
 
   dimension: _fivetran_deleted {
