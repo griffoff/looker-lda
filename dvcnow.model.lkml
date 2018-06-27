@@ -68,7 +68,7 @@ explore: cxp_course {
 
 explore: lipson_submissions_weekly {
   group_label: "Lipson Low Score Reports"
-  label: "Submissions Discipline PrType FType Report"
+  label: "CXP Submissions Report"
   description: "Using table Submissions"
  join: lipson_disciplines {
   relationship: many_to_one
@@ -94,7 +94,7 @@ explore: lipson_submissions_weekly {
 
 explore: lipson_weekly_data_cxp {
   group_label: "Lipson Low Score Reports"
-  label: "Weelky_CXP Discipline PrType FType Report"
+  label: "CXP Weekly Report"
   description: "Using table Weekly_Data_CXP"
   sql_always_where: ${_fivetran_deleted}='No' AND ${_fivetran_index} is not NULL;;
   join: lipson_disciplines {
@@ -121,7 +121,7 @@ explore: lipson_weekly_data_cxp {
 
 explore: lipson_united {
   group_label: "Lipson Low Score Reports"
-  label: "United Data Discipline PrType FType Report"
+  label: "United Data Report"
   description: "Using tables Submissions and Submissions_CNOW"
   join: lipson_disciplines {
     relationship: many_to_one
@@ -147,7 +147,7 @@ explore: lipson_united {
 
 explore: lipson_weekly_united {
   group_label: "Lipson Low Score Reports"
-  label: "United Weelky Discipline PrType FType Report"
+  label: "United Weelky Report"
   description: "Using table Weekly_Data"
  sql_always_where: ${_fivetran_deleted}='No' ;;
   join: lipson_disciplines {
