@@ -85,19 +85,4 @@ view: lipson_weekly_data_cxp {
     type: number
     sql: ${total_ntakes_times_avgscore} / ${total_takes};;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

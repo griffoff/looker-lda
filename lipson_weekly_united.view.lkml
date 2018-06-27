@@ -92,4 +92,5 @@ view: lipson_weekly_united {
     type: number
     sql: ${total_ntakes_times_avgscore} / ${total_takes};;
   }
+
 }

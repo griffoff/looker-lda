@@ -69,6 +69,7 @@ explore: cxp_course {
 explore: lipson_submissions_weekly {
   group_label: "Lipson Low Score Reports"
   label: "Submissions Discipline PrType FType Report"
+  description: "Using table Submissions"
  join: lipson_disciplines {
   relationship: many_to_one
   sql_on: ${lipson_disciplines.productcode} = ${lipson_submissions_weekly.productcode} ;;
@@ -94,6 +95,7 @@ explore: lipson_submissions_weekly {
 explore: lipson_weekly_data_cxp {
   group_label: "Lipson Low Score Reports"
   label: "Weelky_CXP Discipline PrType FType Report"
+  description: "Using table Weekly_Data_CXP"
   sql_always_where: ${_fivetran_deleted}='No' AND ${_fivetran_index} is not NULL;;
   join: lipson_disciplines {
     relationship: many_to_one
@@ -120,6 +122,7 @@ explore: lipson_weekly_data_cxp {
 explore: lipson_united {
   group_label: "Lipson Low Score Reports"
   label: "United Data Discipline PrType FType Report"
+  description: "Using tables Submissions and Submissions_CNOW"
   join: lipson_disciplines {
     relationship: many_to_one
     sql_on: ${lipson_disciplines.productcode} = ${lipson_united.productcode} ;;
@@ -145,17 +148,18 @@ explore: lipson_united {
 explore: lipson_weekly_united {
   group_label: "Lipson Low Score Reports"
   label: "United Weelky Discipline PrType FType Report"
-  sql_always_where: ${_fivetran_deleted}='No' AND ${_fivetran_index} is not NULL;;
-#  join: lipson_disciplines {
-#    relationship: many_to_one
-#    sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_united.productcode} ;;
-#  }
-#  join: lipson_item_types {
-#    type: inner
-#    relationship: many_to_one
-#    sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_united.productcode}
-#      AND ${lipson_item_types.itemname} = ${lipson_weekly_united.itemname} ;;
-#  }
+  description: "Using table Weekly_Data"
+ sql_always_where: ${_fivetran_deleted}='No' ;;
+  join: lipson_disciplines {
+    relationship: many_to_one
+  sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_united.productcode} ;;
+  }
+  join: lipson_item_types {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${lipson_item_types.productcode}= ${lipson_weekly_united.productcode}
+      AND ${lipson_item_types.itemname} = ${lipson_weekly_united.itemname} ;;
+  }
 #  always_filter: {
 #    filters: {
 #      field: lipson_disciplines._fivetran_deleted
