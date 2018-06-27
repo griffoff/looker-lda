@@ -171,3 +171,37 @@ explore: lipson_weekly_united {
 #    }
 #  }
 }
+
+explore: dv_sat_take {
+  group_label: "Lipson Low Score Reports"
+  label: "DataVault_Lipson Report"
+  fields: [ALL_FIELDS*, -dv_lnk_take.lnk_takehash, -dv_lnk_take.takehash, -dv_lnk_take.applicationhash, -dv_lnk_take.assignmenthash, -dv_lnk_take.count,
+    -dv_lnk_take.coursekeyhash, -dv_lnk_take.itemidhash, -dv_lnk_take.userguidhash, -dv_lnk_take.ldts_date, -dv_lnk_take.ldts_month,
+    -dv_lnk_take.ldts_quarter, -dv_lnk_take.ldts_raw, -dv_lnk_take.ldts_time, -dv_lnk_take.ldts_week, -dv_lnk_take.ldts_year, -dv_lnk_take.nodehash,
+    -dv_lnk_take.productcodehash, -dv_lnk_take.rsrc,
+    -dv_sat_productcode.hashdiff,  -dv_sat_productcode.ldts_date, -dv_sat_productcode.ldts_month,
+    -dv_sat_productcode.ldts_quarter, -dv_sat_productcode.ldts_time, -dv_sat_productcode.ldts_week, -dv_sat_productcode.ldts_year,
+    -dv_sat_productcode.ledts_date, -dv_sat_productcode.ledts_month, -dv_sat_productcode.ledts_quarter, -dv_sat_productcode.ledts_time,
+    -dv_sat_productcode.ledts_week, -dv_sat_productcode.ledts_year, -dv_sat_productcode.productcodehash, -dv_sat_productcode.rsrc,
+    -dv_hub_productcode.productcodehash,
+    -dv_sat_itemtypes.ldts_date, -dv_sat_itemtypes.ldts_month, -dv_sat_itemtypes.ldts_quarter, -dv_sat_itemtypes.ldts_time, -dv_sat_itemtypes.ldts_week,
+    -dv_sat_itemtypes.ldts_year, -dv_sat_itemtypes.ledts_date, -dv_sat_itemtypes.ledts_month, -dv_sat_itemtypes.ledts_quarter,
+    -dv_sat_itemtypes.ledts_time, -dv_sat_itemtypes.ledts_week, -dv_sat_itemtypes.ledts_year, -dv_sat_itemtypes.hashdiff, -dv_sat_itemtypes.productcodehash]
+  join: dv_lnk_take {
+    relationship: many_to_one
+    sql_on: ${dv_lnk_take.lnk_takehash} = ${dv_sat_take.lnk_takehash} ;;
+  }
+  join: dv_hub_productcode {
+    relationship: many_to_one
+    sql_on: ${dv_hub_productcode.productcodehash} = ${dv_lnk_take.productcodehash} ;;
+  }
+  join: dv_sat_itemtypes {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${dv_sat_itemtypes.itemname} = ${dv_sat_take.itemname} and ${dv_sat_itemtypes.productcodehash} = ${dv_hub_productcode.productcodehash} ;;
+  }
+  join: dv_sat_productcode {
+    relationship: many_to_one
+    sql_on: ${dv_sat_productcode.productcodehash} = ${dv_hub_productcode.productcodehash} ;;
+  }
+}
