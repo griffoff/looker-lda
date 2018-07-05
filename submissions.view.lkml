@@ -117,7 +117,7 @@ dimension:  scorebuckets{
     sql: ${score} ;;
     tiers: [0.2, 0.4, 0.6, 0.8]
     style: relational
-    value_format_name: percent_0
+   # value_format_name: percent_0
 }
 
 measure: scoreavg {

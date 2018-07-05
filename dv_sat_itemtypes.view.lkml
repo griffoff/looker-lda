@@ -63,4 +63,9 @@ view: dv_sat_itemtypes {
     type: count
     drill_fields: [itemname]
   }
+
+  measure: percent_of_total_activities {
+    type: percent_of_total
+    sql: ${problemtype} ;;
+  }
 }

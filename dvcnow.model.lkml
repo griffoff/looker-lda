@@ -70,6 +70,7 @@ explore: lipson_submissions_weekly {
   group_label: "Lipson Low Score Reports"
   label: "CXP Submissions Report"
   description: "Using table Submissions"
+  fields: [ALL_FIELDS*, -lipson_item_types.percent_of_total_activities]
  join: lipson_disciplines {
   relationship: many_to_one
   sql_on: ${lipson_disciplines.productcode} = ${lipson_submissions_weekly.productcode} ;;
@@ -97,6 +98,7 @@ explore: lipson_weekly_data_cxp {
   label: "CXP Weekly Report"
   description: "Using table Weekly_Data_CXP"
   sql_always_where: ${_fivetran_deleted}='No' AND ${_fivetran_index} is not NULL;;
+  fields: [ALL_FIELDS*, -lipson_item_types.percent_of_total_activities]
   join: lipson_disciplines {
     relationship: many_to_one
     sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_data_cxp.productcode} ;;
@@ -123,6 +125,7 @@ explore: lipson_united {
   group_label: "Lipson Low Score Reports"
   label: "United Data Report"
   description: "Using tables Submissions and Submissions_CNOW"
+  fields: [ALL_FIELDS*, -lipson_item_types.percent_of_total_activities]
   join: lipson_disciplines {
     relationship: many_to_one
     sql_on: ${lipson_disciplines.productcode} = ${lipson_united.productcode} ;;
@@ -154,6 +157,7 @@ explore: lipson_weekly_united {
     relationship: many_to_one
   sql_on: ${lipson_disciplines.productcode} = ${lipson_weekly_united.productcode} ;;
   }
+  fields: [ALL_FIELDS*, -lipson_item_types.percent_of_total_activities]
   join: lipson_item_types {
     type: inner
     relationship: many_to_one
@@ -175,6 +179,7 @@ explore: lipson_weekly_united {
 explore: dv_sat_take {
   group_label: "Lipson Low Score Reports"
   label: "DataVault_Lipson Report"
+  description: "Using DataVault_Lipson"
   fields: [ALL_FIELDS*, -dv_lnk_take.lnk_takehash, -dv_lnk_take.takehash, -dv_lnk_take.applicationhash, -dv_lnk_take.assignmenthash, -dv_lnk_take.count,
     -dv_lnk_take.coursekeyhash, -dv_lnk_take.itemidhash, -dv_lnk_take.userguidhash, -dv_lnk_take.ldts_date, -dv_lnk_take.ldts_month,
     -dv_lnk_take.ldts_quarter, -dv_lnk_take.ldts_raw, -dv_lnk_take.ldts_time, -dv_lnk_take.ldts_week, -dv_lnk_take.ldts_year, -dv_lnk_take.nodehash,
@@ -186,7 +191,8 @@ explore: dv_sat_take {
     -dv_hub_productcode.productcodehash,
     -dv_sat_itemtypes.ldts_date, -dv_sat_itemtypes.ldts_month, -dv_sat_itemtypes.ldts_quarter, -dv_sat_itemtypes.ldts_time, -dv_sat_itemtypes.ldts_week,
     -dv_sat_itemtypes.ldts_year, -dv_sat_itemtypes.ledts_date, -dv_sat_itemtypes.ledts_month, -dv_sat_itemtypes.ledts_quarter,
-    -dv_sat_itemtypes.ledts_time, -dv_sat_itemtypes.ledts_week, -dv_sat_itemtypes.ledts_year, -dv_sat_itemtypes.hashdiff, -dv_sat_itemtypes.productcodehash]
+    -dv_sat_itemtypes.ledts_time, -dv_sat_itemtypes.ledts_week, -dv_sat_itemtypes.ledts_year, -dv_sat_itemtypes.hashdiff, -dv_sat_itemtypes.productcodehash,
+    -dv_sat_itemtypes.percent_of_total_activities]
   join: dv_lnk_take {
     relationship: many_to_one
     sql_on: ${dv_lnk_take.lnk_takehash} = ${dv_sat_take.lnk_takehash} ;;
@@ -205,3 +211,7 @@ explore: dv_sat_take {
     sql_on: ${dv_sat_productcode.productcodehash} = ${dv_hub_productcode.productcodehash} ;;
   }
 }
+
+explore: lipson_item_types {}
+
+explore: submissions {}

@@ -54,4 +54,10 @@ view: lipson_item_types {
     type: count
     drill_fields: [itemname]
   }
+
+  measure: percent_of_total_activities {
+    type: percent_of_total
+    sql: ${count} ;;
+    value_format: "0.0000\%"
+  }
 }
