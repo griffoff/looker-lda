@@ -9,6 +9,7 @@ view: submissions_periods {
     dimension: _fivetran_index {
       type: number
       sql: ${TABLE}._FIVETRAN_INDEX ;;
+      hidden: yes
     }
 
     dimension: _fivetran_synced {
@@ -24,6 +25,7 @@ view: submissions_periods {
     dimension: activitytype {
       type: string
       sql: ${TABLE}.ACTIVITYTYPE ;;
+      hidden: yes
     }
 
     dimension: application {
@@ -44,6 +46,7 @@ view: submissions_periods {
     dimension: geyserversion {
       type: number
       sql: ${TABLE}.GEYSERVERSION ;;
+      hidden: yes
     }
 
     dimension: itemid {
@@ -60,30 +63,35 @@ view: submissions_periods {
       group_label: "Item Uri"
       type: string
       sql: ${TABLE}.ITEMURI ;;
+      hidden: yes
     }
 
     dimension: itemuri_system {
       group_label: "Item Uri"
       type: string
       sql: split_part(${TABLE}.ITEMURI, ':', 1) ;;
+      hidden: yes
     }
 
     dimension: itemuri_productcode {
       group_label: "Item Uri"
       type: string
       sql: split_part(${TABLE}.ITEMURI, ':', 2) ;;
+      hidden: yes
     }
 
     dimension: itemuri_itemid {
       group_label: "Item Uri"
       type: string
       sql: split_part(${TABLE}.ITEMURI, ':', -1) ;;
+      hidden: yes
     }
 
     measure: item_uri_example {
       group_label: "Item Uri"
       type: string
       sql: any_value(${itemuri}) ;;
+      hidden: yes
     }
 
     dimension: nodeid {
@@ -104,6 +112,7 @@ view: submissions_periods {
     dimension: regenindex {
       type: number
       sql: ${TABLE}.REGENINDEX ;;
+      hidden: yes
     }
 
     dimension: score {
@@ -123,7 +132,7 @@ view: submissions_periods {
     measure: scoreavg {
       type: average
       sql: ${score} ;;
-      value_format_name: percent_1
+     # value_format_name: percent_1
       label: "Average Score"
     }
     dimension: seed {
@@ -144,11 +153,13 @@ view: submissions_periods {
     dimension: takeindex {
       type: number
       sql: ${TABLE}.TAKEINDEX ;;
+      hidden: yes
     }
 
     dimension: time {
       type: number
       sql: ${TABLE}."TIME" ;;
+      hidden: yes
     }
 
     dimension_group: time {
@@ -163,11 +174,13 @@ view: submissions_periods {
     dimension: urialiases {
       type: string
       sql: ${TABLE}.URIALIASES ;;
+      hidden: yes
     }
 
     dimension: uricanonical {
       type: string
       sql: ${TABLE}.URICANONICAL ;;
+      hidden: yes
     }
 
     dimension: useruri {

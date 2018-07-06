@@ -214,4 +214,30 @@ explore: dv_sat_take {
 
 #explore: lipson_item_types {}
 
-explore: submissions {}
+explore: submissions {
+  group_label: "Visualization Lipson Low Score Reports"
+  label: "Submissions Visualization"
+  description: "Using table Submissions"
+}
+
+explore: submissions_periods {
+  group_label: "Visualization Lipson Low Score Reports"
+  label: "Submissions Visualization + Time"
+  description: "Using table Submissions and TimeStamp"
+ # sql_always_where: ${_fivetran_deleted}='No' ;;
+  join: lipson_disciplines {
+    relationship: many_to_one
+    sql_on: ${lipson_disciplines.productcode} = ${submissions_periods.itemuri_productcode} ;;
+  }
+  fields: [ALL_FIELDS*, -lipson_item_types.percent_of_total_activities]
+  join: lipson_item_types {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${lipson_item_types.productcode}= ${submissions_periods.productcode}
+      AND ${lipson_item_types.itemname} = ${submissions_periods.itemname} ;;
+  }
+
+
+
+
+}

@@ -72,24 +72,28 @@ view: submissions {
     group_label: "Item Uri"
     type: string
     sql: split_part(${TABLE}.ITEMURI, ':', 1) ;;
+    hidden: yes
   }
 
   dimension: itemuri_productcode {
     group_label: "Item Uri"
     type: string
     sql: split_part(${TABLE}.ITEMURI, ':', 2) ;;
+    hidden: yes
   }
 
   dimension: itemuri_itemid {
     group_label: "Item Uri"
     type: string
     sql: split_part(${TABLE}.ITEMURI, ':', -1) ;;
+    hidden: yes
   }
 
   measure: item_uri_example {
     group_label: "Item Uri"
     type: string
     sql: any_value(${itemuri}) ;;
+    hidden: yes
   }
 
   dimension: nodeid {
