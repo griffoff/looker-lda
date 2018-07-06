@@ -212,6 +212,6 @@ explore: dv_sat_take {
   }
 }
 
-explore: lipson_item_types {}
+#explore: lipson_item_types {}
 
 explore: submissions {}
