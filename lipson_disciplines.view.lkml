@@ -1,4 +1,4 @@
-view: disciplines {
+view: lipson_disciplines {
   sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.DISCIPLINES ;;
 
   dimension: _fivetran_deleted {
@@ -9,11 +9,13 @@ view: disciplines {
   dimension: _fivetran_index {
     type: number
     sql: ${TABLE}._FIVETRAN_INDEX ;;
+    hidden: yes
   }
 
   dimension: _fivetran_synced {
     type: string
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    hidden: yes
   }
 
   dimension: category {

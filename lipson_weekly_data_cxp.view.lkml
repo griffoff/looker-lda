@@ -1,19 +1,27 @@
-view: weekly_data {
-  sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.WEEKLY_DATA ;;
+view: lipson_weekly_data_cxp {
+  sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.WEEKLY_DATA_CXP ;;
 
   dimension: _fivetran_deleted {
     type: yesno
     sql: ${TABLE}._FIVETRAN_DELETED ;;
   }
 
+  dimension: _fivetran_id {
+    type: string
+    sql: ${TABLE}._FIVETRAN_ID ;;
+    hidden: yes
+  }
+
   dimension: _fivetran_index {
     type: number
     sql: ${TABLE}._FIVETRAN_INDEX ;;
+    hidden: yes
   }
 
-  dimension: _fivetran_synced {
-    type: string
+  dimension_group: _fivetran_synced {
+    type: time
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    #hidden: yes
   }
 
   dimension: avgscore {
@@ -36,9 +44,10 @@ view: weekly_data {
     sql: ${TABLE}.PRODUCTCODE ;;
   }
 
-  dimension: source {
-    type: string
-    sql: ${TABLE}.SOURCE ;;
+  dimension: ntakes_times_avgscore {
+    type: number
+    sql: ${TABLE}."NTAKES" * ${TABLE}."AVGSCORE" ;;
+    hidden:  yes
   }
 
   dimension_group: weekstart {
@@ -59,5 +68,21 @@ view: weekly_data {
   measure: count {
     type: count
     drill_fields: [itemname]
+  }
+
+  measure: total_ntakes_times_avgscore {
+    type: sum
+    sql: ${ntakes_times_avgscore} ;;
+    hidden: yes
+  }
+
+  measure: total_takes {
+    type: sum
+    sql: ${ntakes} ;;
+  }
+
+  measure: average_score {
+    type: number
+    sql: ${total_ntakes_times_avgscore} / ${total_takes};;
   }
 }

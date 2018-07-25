@@ -1,5 +1,5 @@
-view: weekly_data_cxp {
-  sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.WEEKLY_DATA_CXP ;;
+view: lipson_item_types {
+  sql_table_name: FIVETRAN_CNOW_CXP_ANALYSIS.ITEM_TYPES ;;
 
   dimension: _fivetran_deleted {
     type: yesno
@@ -9,21 +9,30 @@ view: weekly_data_cxp {
   dimension: _fivetran_id {
     type: string
     sql: ${TABLE}._FIVETRAN_ID ;;
+    hidden: yes
   }
 
   dimension: _fivetran_index {
     type: number
     sql: ${TABLE}._FIVETRAN_INDEX ;;
+    hidden: yes
   }
 
   dimension: _fivetran_synced {
     type: string
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
+    hidden: yes
   }
 
-  dimension: avgscore {
-    type: number
-    sql: ${TABLE}.AVGSCORE ;;
+  dimension: fieldtypes {
+    type: string
+    sql: ${TABLE}.FIELDTYPES ;;
+  }
+
+  dimension: gradingmethods {
+    type: string
+    sql: ${TABLE}.GRADINGMETHODS ;;
+    hidden: yes
   }
 
   dimension: itemname {
@@ -31,9 +40,9 @@ view: weekly_data_cxp {
     sql: ${TABLE}.ITEMNAME ;;
   }
 
-  dimension: ntakes {
-    type: number
-    sql: ${TABLE}.NTAKES ;;
+  dimension: problemtype {
+    type: string
+    sql: ${TABLE}.PROBLEMTYPE ;;
   }
 
   dimension: productcode {
@@ -41,23 +50,14 @@ view: weekly_data_cxp {
     sql: ${TABLE}.PRODUCTCODE ;;
   }
 
-  dimension_group: weekstart {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.WEEKSTART ;;
-  }
-
   measure: count {
     type: count
     drill_fields: [itemname]
+  }
+
+  measure: percent_of_total_activities {
+    type: percent_of_total
+    sql: ${count} ;;
+    value_format: "0.0000\%"
   }
 }

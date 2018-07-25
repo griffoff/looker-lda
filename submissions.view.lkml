@@ -9,6 +9,7 @@ view: submissions {
   dimension: _fivetran_index {
     type: number
     sql: ${TABLE}._FIVETRAN_INDEX ;;
+    hidden: yes
   }
 
   dimension: _fivetran_synced {
@@ -24,6 +25,7 @@ view: submissions {
   dimension: activitytype {
     type: string
     sql: ${TABLE}.ACTIVITYTYPE ;;
+    hidden: yes
   }
 
   dimension: application {
@@ -34,16 +36,19 @@ view: submissions {
   dimension: assignmenturi {
     type: string
     sql: ${TABLE}.ASSIGNMENTURI ;;
+    hidden: yes
   }
 
   dimension: courseuri {
     type: string
     sql: ${TABLE}.COURSEURI ;;
+    hidden: yes
   }
 
   dimension: geyserversion {
     type: number
     sql: ${TABLE}.GEYSERVERSION ;;
+    hidden: yes
   }
 
   dimension: itemid {
@@ -57,8 +62,38 @@ view: submissions {
   }
 
   dimension: itemuri {
+    group_label: "Item Uri"
     type: string
     sql: ${TABLE}.ITEMURI ;;
+    hidden: yes
+  }
+
+  dimension: itemuri_system {
+    group_label: "Item Uri"
+    type: string
+    sql: split_part(${TABLE}.ITEMURI, ':', 1) ;;
+    hidden: yes
+  }
+
+  dimension: itemuri_productcode {
+    group_label: "Item Uri"
+    type: string
+    sql: split_part(${TABLE}.ITEMURI, ':', 2) ;;
+    hidden: yes
+  }
+
+  dimension: itemuri_itemid {
+    group_label: "Item Uri"
+    type: string
+    sql: split_part(${TABLE}.ITEMURI, ':', -1) ;;
+    hidden: yes
+  }
+
+  measure: item_uri_example {
+    group_label: "Item Uri"
+    type: string
+    sql: any_value(${itemuri}) ;;
+    hidden: yes
   }
 
   dimension: nodeid {
@@ -79,6 +114,7 @@ measure:  productcount{
   dimension: regenindex {
     type: number
     sql: ${TABLE}.REGENINDEX ;;
+    hidden: yes
   }
 
   dimension: score {
@@ -92,7 +128,7 @@ dimension:  scorebuckets{
     sql: ${score} ;;
     tiers: [0.2, 0.4, 0.6, 0.8]
     style: relational
-    value_format_name: percent_0
+   # value_format_name: percent_0
 }
 
 measure: scoreavg {
@@ -104,6 +140,7 @@ measure: scoreavg {
   dimension: seed {
     type: string
     sql: ${TABLE}.SEED ;;
+    hidden: yes
   }
 
   dimension: source {
@@ -119,21 +156,34 @@ measure: scoreavg {
   dimension: takeindex {
     type: number
     sql: ${TABLE}.TAKEINDEX ;;
+    hidden: yes
   }
 
   dimension: time {
     type: number
-    sql: ${TABLE}.TIME ;;
+    sql: ${TABLE}."TIME" ;;
+    hidden: yes
+  }
+
+  dimension_group: time {
+    group_label: "Submission Date"
+    label: "Submission"
+    type: time
+    timeframes: [year, month, week, day_of_week, date, day_of_month, time, raw]
+    #sql: to_timestamp(${TABLE}.TIME*1000, 3) ;;
+    sql: to_timestamp(cast(TIME*1000 AS bigint),3) ;;
   }
 
   dimension: urialiases {
     type: string
     sql: ${TABLE}.URIALIASES ;;
+    hidden: yes
   }
 
   dimension: uricanonical {
     type: string
     sql: ${TABLE}.URICANONICAL ;;
+    hidden: yes
   }
 
   dimension: useruri {
