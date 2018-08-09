@@ -1,7 +1,6 @@
 connection: "snowflake_lda"
 
 include: "*.view.lkml"         # include all views in this project
-include: "*.dashboard.lookml"  # include all dashboards in this project
 
 explore: cxp_sat_take {
   label: "Direct_ProductCode-ItemID-Report"
