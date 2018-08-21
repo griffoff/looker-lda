@@ -90,6 +90,13 @@ explore: scores {
     relationship: one_to_many
   }
 
+  join: lnk_student_take_item_course {
+    sql_on: (${lnk_student_take_item.userguidhash}, ${lnk_student_take_item.takehash}, ${lnk_student_take_item.itemidhash})
+          = (${lnk_student_take_item_course.userguidhash}, ${lnk_student_take_item_course.takehash}, ${lnk_student_take_item_course.itemidhash}) ;;
+    relationship: one_to_many
+  }
+
+
   join: hub_item {
     sql_on: ${lnk_student_take_item.itemidhash} = ${hub_item.itemidhash};;
     relationship: one_to_one
@@ -121,7 +128,7 @@ explore: scores {
   }
 
   join: lnk_coursesection_product {
-    sql_on: ${lnk_coursesection_student.coursekeyhash} = ${lnk_coursesection_product.coursekeyhash} ;;
+    sql_on: ${lnk_student_take_item_course.coursekeyhash} = ${lnk_coursesection_product.coursekeyhash} ;;
     relationship: many_to_one
   }
 
