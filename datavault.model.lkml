@@ -58,14 +58,14 @@ explore: hub_coursesection {
     relationship: many_to_one
   }
   # which students answered which items
-  join: lnk_student_take_item {
-    sql_on: ${hub_student.userguidhash} = ${lnk_student_take_item.userguidhash}
-            and ${hub_item.itemidhash} = ${lnk_student_take_item.itemidhash};;
+  join: lnk_student_take_item_course {
+    sql_on: ${hub_student.userguidhash} = ${lnk_student_take_item_course.userguidhash}
+            and ${hub_item.itemidhash} = ${lnk_student_take_item_course.itemidhash};;
     relationship: one_to_many
   }
-  join: sat_student_take_item {
-    sql_on: ${lnk_student_take_item.userguidtakeitemidhash} = ${sat_student_take_item.userguidtakeitemidhash}
-          and ${sat_student_take_item.is_current};;
+  join: sat_student_take_item_course {
+    sql_on: ${lnk_student_take_item_course.userguidtakeitemidcoursekeyhash} = ${sat_student_take_item_course.userguidtakeitemidcoursekeyhash}
+          and ${sat_student_take_item_course.is_current};;
           relationship: one_to_one
   }
 #   join: lnk_student_take {
@@ -80,40 +80,33 @@ explore: hub_coursesection {
 }
 
 explore: scores {
-  from: sat_student_take_item
-  view_name: sat_student_take_item
-  sql_always_where: ${sat_student_take_item.is_current} ;;
+  from: sat_student_take_item_course
+  view_name: sat_student_take_item_course
+  sql_always_where: ${sat_student_take_item_course.is_current} ;;
 
   # which students answered which items
-  join: lnk_student_take_item {
-    sql_on: ${sat_student_take_item.userguidtakeitemidhash} = ${lnk_student_take_item.userguidtakeitemidhash};;
-    relationship: one_to_many
-  }
-
   join: lnk_student_take_item_course {
-    sql_on: (${lnk_student_take_item.userguidhash}, ${lnk_student_take_item.takehash}, ${lnk_student_take_item.itemidhash})
-          = (${lnk_student_take_item_course.userguidhash}, ${lnk_student_take_item_course.takehash}, ${lnk_student_take_item_course.itemidhash}) ;;
+    sql_on: ${sat_student_take_item_course.userguidtakeitemidcoursekeyhash} = ${lnk_student_take_item_course.userguidtakeitemidcoursekeyhash};;
     relationship: one_to_many
   }
-
 
   join: hub_item {
-    sql_on: ${lnk_student_take_item.itemidhash} = ${hub_item.itemidhash};;
+    sql_on: ${lnk_student_take_item_course.itemidhash} = ${hub_item.itemidhash};;
     relationship: one_to_one
   }
 
   join: hub_student {
-    sql_on: ${lnk_student_take_item.userguidhash} = ${hub_student.userguidhash} ;;
+    sql_on: ${lnk_student_take_item_course.userguidhash} = ${hub_student.userguidhash} ;;
     relationship: many_to_one
   }
 
   join: hub_take {
-    sql_on: ${lnk_student_take_item.takehash} = ${hub_take.takehash} ;;
+    sql_on: ${lnk_student_take_item_course.takehash} = ${hub_take.takehash} ;;
     relationship: many_to_one
   }
 
   join: lnk_assignment_item {
-    sql_on: ${lnk_student_take_item.itemidhash} = ${lnk_assignment_item.itemidhash} ;;
+    sql_on: ${lnk_student_take_item_course.itemidhash} = ${lnk_assignment_item.itemidhash} ;;
     relationship: one_to_many
   }
 
@@ -123,7 +116,7 @@ explore: scores {
   }
 
   join: lnk_coursesection_student {
-    sql_on: ${lnk_student_take_item.userguidhash} = ${lnk_coursesection_student.userguidhash} ;;
+    sql_on: ${lnk_student_take_item_course.userguidhash} = ${lnk_coursesection_student.userguidhash} ;;
     relationship: many_to_many
   }
 

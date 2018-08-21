@@ -1,7 +1,7 @@
 include: "sat_base.view.lkml"
-view: sat_student_take_item {
+view: sat_student_take_item_course {
   extends: [sat_base]
-  sql_table_name: DATAVAULT.SAT_STUDENT_TAKE_ITEM ;;
+  sql_table_name: DATAVAULT.SAT_STUDENT_TAKE_ITEM_COURSE ;;
 
   dimension_group: finishedat {
     type: time
@@ -94,11 +94,17 @@ view: sat_student_take_item {
     sql: ${TABLE}."STARTEDAT" ;;
   }
 
-  dimension: userguidtakeitemidhash {
+  dimension: userguidtakeitemidcoursekeyhash {
     type: string
-    sql: ${TABLE}."USERGUIDTAKEITEMIDHASH" ;;
+    sql: ${TABLE}."USERGUIDTAKEITEMIDCOURSEKEYHASH" ;;
     primary_key: yes
   }
+
+  dimension: coursekeyhash {
+    type: string
+    sql: ${TABLE}."COURSEKEYHASH" ;;
+  }
+
 
   measure: count {
     type: count
