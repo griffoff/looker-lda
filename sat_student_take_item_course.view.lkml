@@ -25,6 +25,7 @@ view: sat_student_take_item_course {
   dimension: itemname {
     type: string
     sql: ${TABLE}."ITEMNAME" ;;
+    alias: [sat_student_take_item.itemname]
   }
 
   dimension: itemnameproductcodehash {
@@ -63,6 +64,7 @@ view: sat_student_take_item_course {
   dimension: productcode {
     type: string
     sql: ${TABLE}."PRODUCTCODE" ;;
+    alias: [sat_student_take_item.productcode]
   }
 
   dimension: rsrc {
@@ -92,6 +94,7 @@ view: sat_student_take_item_course {
       year
     ]
     sql: ${TABLE}."STARTEDAT" ;;
+    alias: [sat_student_take_item.startedat]
   }
 
   dimension: userguidtakeitemidcoursekeyhash {
@@ -109,12 +112,14 @@ view: sat_student_take_item_course {
   measure: count {
     type: count
     drill_fields: [itemname]
+    alias: [sat_student_take_item.count]
   }
 
   measure: score_average {
     type: average
     sql: ${score} ;;
     value_format_name: decimal_3
+    alias: [sat_student_take_item.score_average]
   }
 
   measure: latest_startedat {
