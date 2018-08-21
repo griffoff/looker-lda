@@ -1,4 +1,3 @@
-
 include: "sat_base.view.lkml"
 view: sat_productcode {
   extends: [sat_base]

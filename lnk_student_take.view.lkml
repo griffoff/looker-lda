@@ -33,6 +33,7 @@ view: lnk_student_take {
   dimension: userguidtakehash {
     type: string
     sql: ${TABLE}."USERGUIDTAKEHASH" ;;
+    primary_key: yes
   }
 
   measure: count {

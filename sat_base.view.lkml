@@ -11,6 +11,6 @@ view: sat_base {
 
   measure: latest_ldts {
     type: max
-    sql: ${ldts_raw} ;;
+    sql: coalesce(${ldts_raw}, 0::timestamp) ;;
   }
  }

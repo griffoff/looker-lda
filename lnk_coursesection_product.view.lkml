@@ -1,14 +1,14 @@
-view: lnk_itemname_productcode {
-  sql_table_name: DATAVAULT.LNK_ITEMNAME_PRODUCTCODE ;;
+view: lnk_coursesection_product {
+  sql_table_name: DATAVAULT.LNK_COURSESECTION_PRODUCT ;;
 
-  dimension: itemnamehash {
+  dimension: coursekeyhash {
     type: string
-    sql: ${TABLE}."ITEMNAMEHASH" ;;
+    sql: ${TABLE}."COURSEKEYHASH" ;;
   }
 
-  dimension: itemnameproductcodehash {
+  dimension: coursekeyproducthash {
     type: string
-    sql: ${TABLE}."ITEMNAMEPRODUCTCODEHASH" ;;
+    sql: ${TABLE}."COURSEKEYPRODUCTHASH" ;;
     primary_key: yes
   }
 
@@ -26,9 +26,9 @@ view: lnk_itemname_productcode {
     sql: ${TABLE}."LDTS" ;;
   }
 
-  dimension: productcodehash {
+  dimension: producthash {
     type: string
-    sql: ${TABLE}."PRODUCTCODEHASH" ;;
+    sql: ${TABLE}."PRODUCTHASH" ;;
   }
 
   dimension: rsrc {

@@ -9,6 +9,7 @@ view: lnk_coursesection_student {
   dimension: coursekeyuserguidhash {
     type: string
     sql: ${TABLE}."COURSEKEYUSERGUIDHASH" ;;
+    primary_key: yes
   }
 
   dimension_group: ldts {

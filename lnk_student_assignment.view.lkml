@@ -28,6 +28,7 @@ view: lnk_student_assignment {
   dimension: userguidassignmenthash {
     type: string
     sql: ${TABLE}."USERGUIDASSIGNMENTHASH" ;;
+    primary_key: yes
   }
 
   dimension: userguidhash {

@@ -38,6 +38,7 @@ view: lnk_student_take_item {
   dimension: userguidtakeitemidhash {
     type: string
     sql: ${TABLE}."USERGUIDTAKEITEMIDHASH" ;;
+    primary_key: yes
   }
 
   measure: count {

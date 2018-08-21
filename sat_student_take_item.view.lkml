@@ -113,7 +113,7 @@ view: sat_student_take_item {
 
   measure: latest_startedat {
     type: max
-    sql: ${startedat_raw} ;;
+    sql: coalesce(${startedat_raw}, 0::timestamp) ;;
   }
 
 }
