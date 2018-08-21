@@ -90,20 +90,20 @@ explore: scores {
     relationship: one_to_many
   }
 
-#   join: hub_item {
-#     sql_on: ${lnk_student_take_item.itemidhash} = ${hub_item.itemidhash};;
-#     relationship: one_to_one
-#   }
+  join: hub_item {
+    sql_on: ${lnk_student_take_item.itemidhash} = ${hub_item.itemidhash};;
+    relationship: one_to_one
+  }
 
-#   join: hub_student {
-#     sql_on: ${lnk_student_take_item.userguidhash} = ${hub_student.userguidhash} ;;
-#     relationship: many_to_one
-#   }
+  join: hub_student {
+    sql_on: ${lnk_student_take_item.userguidhash} = ${hub_student.userguidhash} ;;
+    relationship: many_to_one
+  }
 
-#   join: hub_take {
-#     sql_on: ${lnk_student_take_item.takehash} = ${hub_take.takehash} ;;
-#     relationship: many_to_one
-#   }
+  join: hub_take {
+    sql_on: ${lnk_student_take_item.takehash} = ${hub_take.takehash} ;;
+    relationship: many_to_one
+  }
 
   join: lnk_assignment_item {
     sql_on: ${lnk_student_take_item.itemidhash} = ${lnk_assignment_item.itemidhash} ;;
