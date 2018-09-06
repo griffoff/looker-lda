@@ -4,7 +4,8 @@ include: "hub*.view.lkml"         # include all views in this project
 include: "sat*.view.lkml"         # include all views in this project
 include: "lnk*.view.lkml"         # include all views in this project
 
-
+include: "/cube/dim_product.view"
+include: "/cube/dim_course.view"
 
 
 
@@ -129,6 +130,20 @@ explore: scores {
     sql_on: ${lnk_coursesection_product.producthash} = ${sat_product.producthash} ;;
     relationship: many_to_one
   }
+
+  join: hub_coursesection {
+    sql_on: ${hub_coursesection.coursekeyhash} = ${lnk_coursesection_product.coursekeyhash} ;;
+    relationship: many_to_one
+  }
+
+  join: dim_course {
+    sql_on: ${hub_coursesection.coursekey} = ${dim_course.coursekey} ;;
+    relationship: one_to_one
+    }
+  join: dim_product {
+    sql_on: ${dim_course.productid} = ${dim_product.productid} ;;
+    relationship: many_to_one
+    }
 }
 
 explore: hub_institution {
