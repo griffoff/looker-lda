@@ -33,6 +33,6 @@ view: hub_coursesection {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [rsrc, coursekey, coursekeyhash]
   }
 }

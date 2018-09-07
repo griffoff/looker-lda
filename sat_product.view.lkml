@@ -67,11 +67,13 @@ view: sat_product {
   }
 
   dimension: prod_family_cd {
+    hidden: yes
     type: string
     sql: ${TABLE}."PROD_FAMILY_CD" ;;
   }
 
   dimension: prod_family_de {
+    label: "Product Family"
     type: string
     sql: ${TABLE}."PROD_FAMILY_DE" ;;
   }
@@ -82,11 +84,13 @@ view: sat_product {
   }
 
   dimension: pub_series_cd {
+    hidden: yes
     type: string
     sql: ${TABLE}."PUB_SERIES_CD" ;;
   }
 
   dimension: pub_series_de {
+    label: "Discipline"
     type: string
     sql: ${TABLE}."PUB_SERIES_DE" ;;
   }
