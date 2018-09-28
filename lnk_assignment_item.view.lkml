@@ -1,42 +1,21 @@
+include: "base.lnk_base.view.lkml"
 view: lnk_assignment_item {
+  extends: [lnk_base]
   sql_table_name: DATAVAULT.LNK_ASSIGNMENT_ITEM ;;
 
-  dimension: assignmenthash {
+  dimension: assignment_hash {
     type: string
-    sql: ${TABLE}."ASSIGNMENTHASH" ;;
+    sql: ${TABLE}."ASSIGNMENT_HASH" ;;
   }
 
-  dimension: assignmentitemidhash {
+  dimension: assignment_item_hash {
     type: string
-    sql: ${TABLE}."ASSIGNMENTITEMIDHASH" ;;
+    sql: ${TABLE}."ASSIGNMENT_ITEM_HASH" ;;
   }
 
-  dimension: itemidhash {
+  dimension: item_hash {
     type: string
-    sql: ${TABLE}."ITEMIDHASH" ;;
+    sql: ${TABLE}."ITEM_HASH" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: rsrc {
-    type: string
-    sql: ${TABLE}."RSRC" ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

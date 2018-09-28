@@ -1,38 +1,21 @@
+include: "base.hub_base.view.lkml"
 view: hub_coursesection {
+  extends: [hub_base]
   sql_table_name: DATAVAULT.HUB_COURSESECTION ;;
 
-  dimension: coursekey {
+  dimension: coursesection {
     type: string
-    sql: ${TABLE}."COURSEKEY" ;;
+    sql: ${TABLE}."COURSESECTION" ;;
   }
 
-  dimension: coursekeyhash {
+  dimension: coursesection_hash {
     type: string
-    sql: ${TABLE}."COURSEKEYHASH" ;;
-    primary_key: yes
+    sql: ${TABLE}."COURSESECTION_HASH" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: rsrc {
+  dimension: source {
     type: string
-    sql: ${TABLE}."RSRC" ;;
+    sql: ${TABLE}."SOURCE" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [rsrc, coursekey, coursekeyhash]
-  }
 }

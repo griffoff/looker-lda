@@ -1,43 +1,22 @@
+include: "base.lnk_base.view.lkml"
 view: lnk_coursesection_student {
+  extends: [lnk_base]
+
   sql_table_name: DATAVAULT.LNK_COURSESECTION_STUDENT ;;
 
-  dimension: coursekeyhash {
+  dimension: coursesection_hash {
     type: string
-    sql: ${TABLE}."COURSEKEYHASH" ;;
+    sql: ${TABLE}."COURSESECTION_HASH" ;;
   }
 
-  dimension: coursekeyuserguidhash {
+  dimension: coursesection_student_hash {
     type: string
-    sql: ${TABLE}."COURSEKEYUSERGUIDHASH" ;;
-    primary_key: yes
+    sql: ${TABLE}."COURSESECTION_STUDENT_HASH" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: rsrc {
+  dimension: student_hash {
     type: string
-    sql: ${TABLE}."RSRC" ;;
+    sql: ${TABLE}."STUDENT_HASH" ;;
   }
 
-  dimension: userguidhash {
-    type: string
-    sql: ${TABLE}."USERGUIDHASH" ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

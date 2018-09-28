@@ -1,37 +1,16 @@
+include: "base.hub_base.view.lkml"
 view: hub_product {
+  extends: [hub_base]
   sql_table_name: DATAVAULT.HUB_PRODUCT ;;
-
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
 
   dimension: product {
     type: string
     sql: ${TABLE}."PRODUCT" ;;
   }
 
-  dimension: producthash {
+  dimension: product_hash {
     type: string
-    sql: ${TABLE}."PRODUCTHASH" ;;
+    sql: ${TABLE}."PRODUCT_HASH" ;;
   }
 
-  dimension: rsrc {
-    type: string
-    sql: ${TABLE}."RSRC" ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

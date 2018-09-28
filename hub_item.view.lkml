@@ -1,38 +1,21 @@
+include: "base.hub_base.view.lkml"
 view: hub_item {
+  extends: [hub_base]
   sql_table_name: DATAVAULT.HUB_ITEM ;;
 
-  dimension: itemid {
+  dimension: item {
     type: string
-    sql: ${TABLE}."ITEMID" ;;
+    sql: ${TABLE}."ITEM" ;;
   }
 
-  dimension: itemidhash {
+  dimension: item_hash {
     type: string
-    sql: ${TABLE}."ITEMIDHASH" ;;
-    primary_key: yes
+    sql: ${TABLE}."ITEM_HASH" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: rsrc {
+  dimension: source {
     type: string
-    sql: ${TABLE}."RSRC" ;;
+    sql: ${TABLE}."SOURCE" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

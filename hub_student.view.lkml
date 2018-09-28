@@ -1,39 +1,16 @@
+include: "base.hub_base.view.lkml"
 view: hub_student {
+  extends: [hub_base]
   sql_table_name: DATAVAULT.HUB_STUDENT ;;
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: rsrc {
+  dimension: student {
     type: string
-    sql: ${TABLE}."RSRC" ;;
+    sql: ${TABLE}."STUDENT" ;;
   }
 
-  dimension: userguid {
+  dimension: student_hash {
     type: string
-    sql: ${TABLE}."USERGUID" ;;
+    sql: ${TABLE}."STUDENT_HASH" ;;
   }
 
-  dimension: userguidhash {
-    type: string
-    sql: ${TABLE}."USERGUIDHASH" ;;
-    primary_key: yes
-  }
-
-  measure: count {
-    type: count
-    drill_fields: []
-    value_format_name: decimal_0
-  }
 }

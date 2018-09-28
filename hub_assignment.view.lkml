@@ -1,4 +1,9 @@
+include: "base.hub_base.view.lkml"
+
+explore: hub_assignment {}
+
 view: hub_assignment {
+  extends: [hub_base]
   sql_table_name: DATAVAULT.HUB_ASSIGNMENT ;;
 
   dimension: assignment {
@@ -6,33 +11,14 @@ view: hub_assignment {
     sql: ${TABLE}."ASSIGNMENT" ;;
   }
 
-  dimension: assignmenthash {
+  dimension: assignment_hash {
     type: string
-    sql: ${TABLE}."ASSIGNMENTHASH" ;;
-    primary_key: yes
+    sql: ${TABLE}."ASSIGNMENT_HASH" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: rsrc {
+  dimension: source {
     type: string
-    sql: ${TABLE}."RSRC" ;;
+    sql: ${TABLE}."SOURCE" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

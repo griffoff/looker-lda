@@ -1,7 +1,9 @@
-include: "sat_base.view.lkml"
+include: "base.sat_base.view.lkml"
 view: sat_institution {
   extends: [sat_base]
   sql_table_name: DATAVAULT.SAT_INSTITUTION ;;
+
+  set: set_details {fields:[institutionname, institutiontype, institutionsubtype, county, district, country]}
 
   dimension: city {
     type: string
@@ -24,15 +26,10 @@ view: sat_institution {
     sql: ${TABLE}."DISTRICT" ;;
   }
 
-  dimension: hashdiff {
+  dimension: institution_hash {
     type: string
-    sql: ${TABLE}."HASHDIFF" ;;
-  }
-
-  dimension: institutionhash {
-    type: string
-    sql: ${TABLE}."INSTITUTIONHASH" ;;
-    primary_key: yes
+    sql: ${TABLE}."INSTITUTION_HASH" ;;
+    hidden: yes
   }
 
   dimension: institutionname {
@@ -50,41 +47,4 @@ view: sat_institution {
     sql: ${TABLE}."INSTITUTIONTYPE" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension_group: ledts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LEDTS" ;;
-  }
-
-  dimension: rsrc {
-    type: string
-    sql: ${TABLE}."RSRC" ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: [institutionname]
-  }
 }

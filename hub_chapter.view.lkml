@@ -1,7 +1,12 @@
 include: "base.hub_base.view.lkml"
-view: hub_take {
+view: hub_chapter {
   extends: [hub_base]
-  sql_table_name: DATAVAULT.HUB_TAKE ;;
+  sql_table_name: DATAVAULT.HUB_CHAPTER ;;
+
+  dimension: chapter_hash {
+    type: string
+    sql: ${TABLE}."CHAPTER_HASH" ;;
+  }
 
   dimension: source {
     type: string
@@ -11,11 +16,6 @@ view: hub_take {
   dimension: take {
     type: string
     sql: ${TABLE}."TAKE" ;;
-  }
-
-  dimension: take_hash {
-    type: string
-    sql: ${TABLE}."TAKE_HASH" ;;
   }
 
 }

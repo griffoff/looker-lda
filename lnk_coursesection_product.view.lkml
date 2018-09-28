@@ -1,43 +1,22 @@
+include: "base.lnk_base.view.lkml"
 view: lnk_coursesection_product {
+  extends: [lnk_base]
+
   sql_table_name: DATAVAULT.LNK_COURSESECTION_PRODUCT ;;
 
-  dimension: coursekeyhash {
+  dimension: coursesection_hash {
     type: string
-    sql: ${TABLE}."COURSEKEYHASH" ;;
+    sql: ${TABLE}."COURSESECTION_HASH" ;;
   }
 
-  dimension: coursekeyproducthash {
+  dimension: coursesection_product_hash {
     type: string
-    sql: ${TABLE}."COURSEKEYPRODUCTHASH" ;;
-    primary_key: yes
+    sql: ${TABLE}."COURSESECTION_PRODUCT_HASH" ;;
   }
 
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension: producthash {
+  dimension: product_hash {
     type: string
-    sql: ${TABLE}."PRODUCTHASH" ;;
+    sql: ${TABLE}."PRODUCT_HASH" ;;
   }
 
-  dimension: rsrc {
-    type: string
-    sql: ${TABLE}."RSRC" ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

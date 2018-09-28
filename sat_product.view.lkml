@@ -1,7 +1,9 @@
-include: "sat_base.view.lkml"
+include: "base.sat_base.view.lkml"
 view: sat_product {
   extends: [sat_base]
   sql_table_name: DATAVAULT.SAT_PRODUCT ;;
+
+  set: set_details {fields:[title, pub_series_de, prod_family_de, edition_de, copyright_yr, all_authors_nm, platform]}
 
   dimension: all_authors_nm {
     type: string
@@ -28,76 +30,34 @@ view: sat_product {
     sql: ${TABLE}."EDITION_DE" ;;
   }
 
-  dimension: hashdiff {
-    type: string
-    sql: ${TABLE}."HASHDIFF" ;;
-  }
-
-  dimension_group: ldts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LDTS" ;;
-  }
-
-  dimension_group: ledts {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."LEDTS" ;;
-  }
-
   dimension: platform {
     type: string
     sql: ${TABLE}."PLATFORM" ;;
   }
 
   dimension: prod_family_cd {
-    hidden: yes
     type: string
     sql: ${TABLE}."PROD_FAMILY_CD" ;;
   }
 
   dimension: prod_family_de {
-    label: "Product Family"
     type: string
     sql: ${TABLE}."PROD_FAMILY_DE" ;;
   }
 
-  dimension: producthash {
+  dimension: product_hash {
     type: string
-    sql: ${TABLE}."PRODUCTHASH" ;;
+    sql: ${TABLE}."PRODUCT_HASH" ;;
   }
 
   dimension: pub_series_cd {
-    hidden: yes
     type: string
     sql: ${TABLE}."PUB_SERIES_CD" ;;
   }
 
   dimension: pub_series_de {
-    label: "Discipline"
     type: string
     sql: ${TABLE}."PUB_SERIES_DE" ;;
-  }
-
-  dimension: rsrc {
-    type: string
-    sql: ${TABLE}."RSRC" ;;
   }
 
   dimension: title {
@@ -105,8 +65,4 @@ view: sat_product {
     sql: ${TABLE}."TITLE" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }
