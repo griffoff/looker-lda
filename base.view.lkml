@@ -44,6 +44,27 @@ view: base {
     sql: ${TABLE}."RSRC" ;;
   }
 
+  dimension: source {
+    group_label: "Data Vault Metadata"
+    description: "Simple version of RSRC"
+    type: string
+    case: {
+      when: {
+        label: "CNOW"
+        sql: ${rsrc} like '%CNOW.%'  ;;
+      }
+      when: {
+        label: "CXP"
+        sql: ${rsrc} like '%LDA.CXP_PROD.%'  ;;
+      }
+      when: {
+        label: "WEBASSIGN"
+        sql: ${rsrc} ilike '%WEBASSIGN.%'  ;;
+      }
+      else: "Other"
+    }
+  }
+
   measure: latest_ldts {
     group_label: "Data Vault Load Time"
     label: "Most Recent Load Time"

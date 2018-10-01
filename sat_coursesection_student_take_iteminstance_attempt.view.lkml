@@ -63,7 +63,7 @@ view: sat_coursesection_student_take_iteminstance_attempt {
 
   measure: attempts_avg {
     type: number
-    sql: ${count} / ${hub_student.count} ;;
+    sql: ${count} / nullif(${hub_student.count}, 0) ;;
     value_format_name: decimal_1
   }
 }
