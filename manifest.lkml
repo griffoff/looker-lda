@@ -9,3 +9,6 @@ project_name: "learning_data_analytics"
 local_dependency: {
   project: "core"
 }
+local_dependency: {
+  project: "cube"
+}
